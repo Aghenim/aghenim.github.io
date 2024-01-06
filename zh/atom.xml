@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Aghenim Sanctuary</title>
+  <icon>https://www.gravatar.com/avatar/ea45b4a3e6e11afc565d51f03f991c03</icon>
+  <subtitle>Frontend &amp; DevOps Engineer</subtitle>
+  <link href="http://xsun.work/zh/atom.xml" rel="self"/>
+  
+  <link href="http://xsun.work/zh/"/>
+  <updated>2024-01-06T17:05:18.561Z</updated>
+  <id>http://xsun.work/zh/</id>
+  
+  <author>
+    <name>Aghenim</name>
+    <email>me@xsun.work</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xsun.work/zh/posts/4a17b156/"/>
+    <id>http://xsun.work/zh/posts/4a17b156/</id>
+    <published>2024-01-06T13:45:27.351Z</published>
+    <updated>2024-01-06T17:05:18.561Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="你好，世界。"><a href="#你好，世界。" class="headerlink" title="你好，世界。"></a>你好，世界。</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;你好，世界。&quot;&gt;&lt;a href=&quot;#你好，世界。&quot; class=&quot;headerlink&quot; title=&quot;你好，世界。&quot;&gt;&lt;/a&gt;你好，世界。&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
