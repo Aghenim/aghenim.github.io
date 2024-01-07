@@ -1,5 +1,25 @@
+:root {
+    --preloader-bg: #0d0d0d;
+    --mark-bg: rgba(0, 0, 0, 0.1);
+}
+
+#site-info {
+    text-align: center;
+}
+
+#site-subtitle {
+    display: inline-block;
+}
+
 #subtitle {
-    font-family: Bad Script, cursive, -apple-system, system-ui, sans-serif;
+    font-size: 1.4em;
+    font-family: Bad Script, -apple-system, system-ui, sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .1em solid white;
+    line-height: 1;
+    margin-top: 0.3em;
+    opacity: 0;
 }
 
 #footer {
@@ -14,6 +34,42 @@
     color: #888888;
 }
 
+[data-theme="dark"] {
+    --mark-bg: rgba(0, 0, 0, 0.6);
+}
+
 [data-theme="dark"] #footer {
     background-color: #121212;
+}
+
+@keyframes typing {
+    0% {
+        width: 0
+    }
+    55% {
+        width: 100%
+    }
+    80% {
+        width: 100%
+    }
+    100% {
+        width: 0
+    }
+}
+
+@keyframes waiting {
+    0% {
+        width: 0.01%
+    }
+    100% {
+        width: 0.01%
+    }
+}
+
+#loading-box .spinner-box .configure-border-1 {
+    background: white;
+}
+
+#loading-box .spinner-box .configure-border-2 {
+    background: grey;
 }
