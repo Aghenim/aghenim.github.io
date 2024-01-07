@@ -1,3 +1,19 @@
 #subtitle {
     font-family: Bad Script, cursive, -apple-system, system-ui, sans-serif;
 }
+
+#footer {
+    background-color: #FAFAFA;
+}
+
+#footer-wrap {
+    color: #888888;
+}
+
+#footer-wrap a {
+    color: #888888;
+}
+
+[data-theme="dark"] #footer {
+    background-color: #121212;
+}
