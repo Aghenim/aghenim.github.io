@@ -14,12 +14,9 @@
 #subtitle {
     font-size: 1.4em;
     font-family: Zhi Mang Xing, -apple-system, system-ui, sans-serif;
-    overflow: hidden;
     white-space: nowrap;
-    border-right: .1em solid white;
     line-height: 1;
     margin-top: 0.3em;
-    opacity: 0;
 }
 
 #footer {
@@ -54,15 +51,6 @@
     }
     100% {
         width: 0
-    }
-}
-
-@keyframes waiting {
-    0% {
-        width: 0.01%
-    }
-    100% {
-        width: 0.01%
     }
 }
 
