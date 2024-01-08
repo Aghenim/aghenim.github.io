@@ -15,11 +15,6 @@
     font-size: 1.4em;
     font-family: Bad Script, -apple-system, system-ui, sans-serif;
     white-space: nowrap;
-    line-height: 1;
-    margin-top: 0.3em;
-    overflow: hidden;
-    border-right: .1em solid white;
-    opacity: 0;
 }
 
 #footer {
