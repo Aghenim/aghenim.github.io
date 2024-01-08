@@ -6,7 +6,7 @@
   <link href="http://xsun.work/atom.xml" rel="self"/>
   
   <link href="http://xsun.work/"/>
-  <updated>2024-01-08T14:07:33.560Z</updated>
+  <updated>2024-01-08T14:19:14.602Z</updated>
   <id>http://xsun.work/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github-ssh</title>
+    <link href="http://xsun.work/posts/4bbb0782/"/>
+    <id>http://xsun.work/posts/4bbb0782/</id>
+    <published>2024-01-08T14:18:55.000Z</published>
+    <updated>2024-01-08T14:19:14.602Z</updated>
+    
+    <content type="html"><![CDATA[<p>Github SSH<br><a href="https://blog.csdn.net/qq_36667170/article/details/79094257">https://blog.csdn.net/qq_36667170/article/details/79094257</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Github SSH&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/qq_36667170/article/details/79094257&quot;&gt;https://blog.csdn.net/qq_36667170/article/details/7909</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>github-pages</title>
+    <link href="http://xsun.work/posts/b1622bb3/"/>
+    <id>http://xsun.work/posts/b1622bb3/</id>
+    <published>2024-01-08T14:17:57.000Z</published>
+    <updated>2024-01-08T14:19:13.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>github page custom domain<br><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#about-custom-domain-configuration">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#about-custom-domain-configuration</a><br>使用 HTTPS 保护 GitHub Pages 站点 <a href="https://docs.github.com/zh/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https">https://docs.github.com/zh/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;github page custom domain&lt;br&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-pwa</title>
+    <link href="http://xsun.work/posts/1fd3c959/"/>
+    <id>http://xsun.work/posts/1fd3c959/</id>
+    <published>2024-01-08T14:13:45.000Z</published>
+    <updated>2024-01-08T14:17:37.099Z</updated>
+    
+    
+    
+    
+    <category term="Web" scheme="http://xsun.work/categories/Web/"/>
+    
+    
+    <category term="Hexo" scheme="http://xsun.work/tags/Hexo/"/>
+    
+    <category term="Web" scheme="http://xsun.work/tags/Web/"/>
+    
+    <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
+    
+    <category term="PWA" scheme="http://xsun.work/tags/PWA/"/>
+    
+    <category term="Web App" scheme="http://xsun.work/tags/Web-App/"/>
+    
+  </entry>
   
   <entry>
     <title>Butterfly - Hexo theme installation and configuration</title>
