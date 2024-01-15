@@ -6,7 +6,7 @@
   <link href="http://xsun.work/atom.xml" rel="self"/>
   
   <link href="http://xsun.work/"/>
-  <updated>2024-01-15T07:02:18.285Z</updated>
+  <updated>2024-01-15T07:15:31.735Z</updated>
   <id>http://xsun.work/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>将你的内网服务发布到公网 - 使用开源工具FRP进行网络穿透</title>
+    <title>Publish your intranet services to the public network - use FRP for network penetration</title>
     <link href="http://xsun.work/posts/dd126a4b/"/>
     <id>http://xsun.work/posts/dd126a4b/</id>
     <published>2024-01-15T06:34:41.000Z</published>
-    <updated>2024-01-15T07:02:18.285Z</updated>
+    <updated>2024-01-15T07:15:31.735Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>官方文档：<a href="https://gofrp.org/zh-cn/docs">https://gofrp.org/zh-cn/docs</a></p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/Aghenim/file@main/hexo/1705301049155.jpg" alt="1705301050842">  </p><h1 id="系统需求"><a href="#系统需求" class="headerlink" title="系统需求"></a>系统需求</h1><p>由于采用 Go 语言编写，因此系统需求与最新的 Go 语言对系统和平台的要求一致，具体请参考 <a href="https://golang.org/doc/install#requirements">Golang System requirements</a>。</p><h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>您可以从 GitHub 的 <a href="https://github.com/fatedier/frp/releases">Release</a> 页面中下载最新版本的客户端和服务器二进制文件。所有文件都打包在一个压缩包中，还包含了一份完整的配置参数说明。</p><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><ol><li>解压下载的压缩包。</li><li>将 <code>frpc</code> 复制到内网服务所在的机器上。</li><li>将 <code>frps</code> 复制到拥有公网 IP 地址的机器上，并将它们放在任意目录。</li></ol><h1 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h1><ol><li><p>编写配置文件，目前支持的文件格式包括 TOML&#x2F;YAML&#x2F;JSON，旧的 INI 格式仍然支持，但已经不再推荐。</p></li><li><p>使用以下命令启动服务器：<code>./frps -c ./frps.toml</code>。</p></li><li><p>使用以下命令启动客户端：<code>./frpc -c ./frpc.toml</code>。</p></li><li><p>如果需要在后台长期运行，建议结合其他工具，如 <a href="https://gofrp.org/zh-cn/docs/setup/systemd/">systemd</a> 、<code>nohup</code>和 <code>supervisor</code>。</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 服务端</span></span><br><span class="line"><span class="built_in">nohup</span> ./frps -c ./frps.toml &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端</span></span><br><span class="line"><span class="built_in">nohup</span> ./frpc -c ./frpc.toml &amp;</span><br></pre></td></tr></table></figure></li></ol><p>有关如何编写配置文件，详见 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 章节中的内容。</p><p>完整的配置项说明，详见 <a href="https://gofrp.org/zh-cn/docs/reference/">官方文档 - 参考</a> 中的内容。</p><h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><h2 id="frps-toml"><a href="#frps-toml" class="headerlink" title="frps.toml"></a>frps.toml</h2><p><strong>在具有公网 IP 的机器上部署 frps</strong></p><p>部署 frps 并编辑 frps.toml 文件。以下是简化的配置，其中设置了 frp 服务器用于接收客户端连接的端口：</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br></pre></td></tr></table></figure><h2 id="frpc-toml"><a href="#frpc-toml" class="headerlink" title="frpc.toml"></a>frpc.toml</h2><p><strong>在需要被访问的内网机器上部署 frpc</strong></p><p>部署 frpc 并编辑 frpc.toml 文件，假设 frps 所在服务器的公网 IP 地址为 x.x.x.x。以下是示例配置：</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;x.x.x.x&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;ssh&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">6000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nginx&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8080</span></span><br></pre></td></tr></table></figure><ul><li><code>localIP</code> 和 <code>localPort</code> 配置为需要从公网访问的内网服务的地址和端口。</li><li><code>remotePort</code> 表示在 frp 服务端监听的端口，访问此端口的流量将被转发到本地服务的相应端口。</li><li><code>type</code>表示连接类型，常用的type包括<code>http</code>和<code>tcp</code>：<ul><li>常见的Web服务、Server服务都是<code>http</code>连接。</li><li>如ssh、mysql、redis等服务的连接为<code>tcp</code>连接。</li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>官方文档：<a href="https://gofrp.org/zh-cn/docs">https://gofrp.org/zh-cn/docs</a></p></blockquote><p><img src="https://cdn.jsdelivr.net/gh/Aghenim/file@main/hexo/1705301049155.jpg" alt="1705301050842">  </p><h1 id="System-Requirements"><a href="#System-Requirements" class="headerlink" title="System Requirements"></a>System Requirements</h1><p>As it is written in Go language, the system requirements are consistent with the latest Go language requirements for systems and platforms. For details, please refer to <a href="https://golang.org/doc/install#requirements">Golang System requirements</a>.</p><h1 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h1><p>You can download the latest version of the client and server binaries from the <a href="https://github.com/fatedier/frp/releases">Release</a> page on GitHub. All files are packaged in a zip file, which also includes a complete set of configuration parameter descriptions.</p><h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><ol><li>Unzip the downloaded package.</li><li>Copy <code>frpc</code> to the machine where the internal network service is located.</li><li>Copy <code>frps</code> to a machine with a public IP address and place them in any directory.</li></ol><h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><ol><li><p>Write the configuration file. Currently supported file formats include TOML&#x2F;YAML&#x2F;JSON. The old INI format is still supported but is no longer recommended.</p></li><li><p>Start the server using the following command: <code>./frps -c ./frps.toml</code>.</p></li><li><p>Start the client using the following command: <code>./frpc -c ./frpc.toml</code>.</p></li><li><p>If you need to run it in the background for a long time, it is recommended to combine it with other tools such as <a href="https://gofrp.org/zh-cn/docs/setup/systemd/">systemd</a>, <code>nohup</code>, and <code>supervisor</code>.</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 服务端</span></span><br><span class="line"><span class="built_in">nohup</span> ./frps -c ./frps.toml &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端</span></span><br><span class="line"><span class="built_in">nohup</span> ./frpc -c ./frpc.toml &amp;</span><br></pre></td></tr></table></figure></li></ol><p>For details on how to write a configuration file, see the content in the [Configuration File](#Configuration File) section.</p><p>For a complete explanation of the configuration options, see the content in the <a href="https://gofrp.org/zh-cn/docs/reference/">Official Documentation - Reference</a>.</p><h1 id="Configuration-File"><a href="#Configuration-File" class="headerlink" title="Configuration File"></a>Configuration File</h1><h2 id="frps-toml"><a href="#frps-toml" class="headerlink" title="frps.toml"></a>frps.toml</h2><p><strong>Deploying frps on a machine with a public IP</strong></p><p>Deploy frps and edit the frps.toml file. Below is a simplified configuration, which sets the port for the frp server to receive client connections:</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br></pre></td></tr></table></figure><h2 id="frpc-toml"><a href="#frpc-toml" class="headerlink" title="frpc.toml"></a>frpc.toml</h2><p><strong>Deploying frpc on an internal network machine that needs to be accessed</strong></p><p>Deploy frpc and edit the frpc.toml file, assuming the public IP address of the server where frps is located is x.x.x.x. Below is an example configuration:</p><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">&quot;x.x.x.x&quot;</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;ssh&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">22</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">6000</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;nginx&quot;</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">80</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">8080</span></span><br></pre></td></tr></table></figure><ul><li><code>localIP</code> and <code>localPort</code> are configured as the address and port of the internal network service that needs to be accessed from the public network.</li><li><code>remotePort</code> indicates the port listened on by the frp server. Traffic to this port will be forwarded to the corresponding port of the local service.</li><li><code>type</code> indicates the connection type, with common types including <code>http</code> and <code>tcp</code>:<ul><li>Common Web services and Server services use <code>http</code> connections.</li><li>Services like ssh, mysql, redis, etc., use <code>tcp</code> connections.</li></ul></li></ul>]]></content>
     
     
       
@@ -69,13 +69,13 @@
     
     <category term="Hexo" scheme="http://xsun.work/tags/Hexo/"/>
     
+    <category term="Web" scheme="http://xsun.work/tags/Web/"/>
+    
     <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
     
     <category term="PWA" scheme="http://xsun.work/tags/PWA/"/>
     
     <category term="Web App" scheme="http://xsun.work/tags/Web-App/"/>
-    
-    <category term="Web" scheme="http://xsun.work/tags/Web/"/>
     
   </entry>
   
@@ -143,13 +143,13 @@
     
     <category term="Hexo" scheme="http://xsun.work/tags/Hexo/"/>
     
-    <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
-    
-    <category term="Web" scheme="http://xsun.work/tags/Web/"/>
-    
     <category term="Butterfly" scheme="http://xsun.work/tags/Butterfly/"/>
     
     <category term="Theme" scheme="http://xsun.work/tags/Theme/"/>
+    
+    <category term="Web" scheme="http://xsun.work/tags/Web/"/>
+    
+    <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
     
   </entry>
   
@@ -177,9 +177,9 @@
     
     <category term="Hexo" scheme="http://xsun.work/tags/Hexo/"/>
     
-    <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
-    
     <category term="Web" scheme="http://xsun.work/tags/Web/"/>
+    
+    <category term="Blog" scheme="http://xsun.work/tags/Blog/"/>
     
   </entry>
   
