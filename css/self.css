@@ -1,5 +1,12 @@
 :root {
-    --preloader-bg: #0d0d0d;
+    --preloader-bg: #FFF;
+    --preloader-color: #000;
+    --mark-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"]:root {
+    --preloader-bg: #0D0D0D;
+    --preloader-color: #FFF;
     --mark-bg: rgba(0, 0, 0, 0.1);
 }
 
@@ -38,9 +45,9 @@
 }
 
 #loading-box .spinner-box .configure-border-1 {
-    background: white;
+    background: #CCC;
 }
 
 #loading-box .spinner-box .configure-border-2 {
-    background: grey;
+    background: #444;
 }
